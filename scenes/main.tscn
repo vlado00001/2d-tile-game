@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://i8d31tq55b3r"]
 
+[ext_resource type="Script" uid="uid://biuw5p5yj0ldp" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bdktem66v2m3o" path="res://scenes/levels/base_level.tscn" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://km6hbfq070yt" path="res://scenes/hud.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://cvd6t0r87ft00" path="res://scripts/hud.gd" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=1646952689]
+script = ExtResource("1_0wfyh")
 
 [node name="LevelRoot" parent="." unique_id=1304778101 instance=ExtResource("1_sugp2")]
+
+[node name="HUD" parent="." unique_id=257837387 instance=ExtResource("3_sugp2")]
+script = ExtResource("4_jyhfs")

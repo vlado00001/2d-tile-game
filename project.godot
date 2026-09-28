@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="game-2"
+config/name="Game2"
 run/main_scene="uid://i8d31tq55b3r"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [audio]
 
 buses/default_bus_layout="uid://60ry7ym6gund"
+
+[autoload]
+
+PlayerStats="*uid://dydg1qp4nghy"
+BackgroundMusic="*uid://byrg2ff1nblr8"
 
 [display]
 

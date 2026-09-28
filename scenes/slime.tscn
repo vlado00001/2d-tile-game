@@ -187,6 +187,9 @@ stream_1/stream = ExtResource("5_v5wyi")
 stream_2/stream = ExtResource("6_0l8pv")
 stream_3/stream = ExtResource("7_vnioy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg7dj"]
+size = Vector2(14, 12)
+
 [node name="EnemySlime" type="CharacterBody2D" unique_id=786967590]
 z_index = 5
 collision_layer = 2
@@ -221,5 +224,15 @@ bus = &"SFX"
 position = Vector2(-6.67, -12)
 scale = Vector2(0.75, 0.75)
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=295863163]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=486926689]
+shape = SubResource("RectangleShape2D_tg7dj")
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1840962422]
+
 [connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

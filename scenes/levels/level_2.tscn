@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dpp2e0pyauyck"]
+
+[ext_resource type="PackedScene" uid="uid://bdktem66v2m3o" path="res://scenes/levels/base_level.tscn" id="1_j2425"]
+
+[node name="LevelRoot" unique_id=1304778101 instance=ExtResource("1_j2425")]
+
+[node name="Label" parent="TileMapLayers/TileMapLayer_Terrain" parent_id_path=PackedInt32Array(1156922665) index="0" unique_id=1616993136]
+offset_left = -190.5
+offset_top = -376.0
+offset_right = -160.75
+offset_bottom = -346.0
+text = "2"

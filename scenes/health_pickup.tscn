@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b21w5dsv7pnyo"]
+
+[ext_resource type="Script" uid="uid://dx7fnlu7k7ikk" path="res://scripts/health_pickup.gd" id="1_3p6mu"]
+[ext_resource type="Texture2D" uid="uid://bjvxtapkr8c0t" path="res://assets/images/items/Medipack.png" id="1_ciapp"]
+[ext_resource type="AudioStream" uid="uid://tsmj27wawmb3" path="res://assets/audio/player_heal.wav" id="3_i662h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkhbd"]
+size = Vector2(10, 10)
+
+[node name="HealthPickup" type="Area2D" unique_id=202132797]
+z_index = 5
+scale = Vector2(3, 3)
+script = ExtResource("1_3p6mu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1668331987]
+texture = ExtResource("1_ciapp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15545319]
+shape = SubResource("RectangleShape2D_dkhbd")
+
+[node name="CollectingSound" type="AudioStreamPlayer2D" parent="." unique_id=783647098]
+stream = ExtResource("3_i662h")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

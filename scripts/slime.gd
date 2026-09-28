@@ -3,14 +3,19 @@ extends CharacterBody2D
 @onready var take_damage_sfx: AudioStreamPlayer2D = $TakeDamage
 @onready var die_sfx: AudioStreamPlayer2D = $Die
 @onready var health_bar: Node2D = $HealthBar
+@onready var attack_cooldown: Timer = $AttackCooldown
 
 
 const SPEED: int = 175.0
 const KNOCKBACK_FORCE: int = 100
+const DROP_CHANCE: float = 0.5
 var target = null
+var target_in_range: bool = false
 var health: int = 100
+var strength: int = 5
 var is_alive: bool = true
 
+var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
 
 func _physics_process(delta: float) -> void:
 	if is_alive and target:
@@ -37,7 +42,6 @@ func update_z_index() -> void:
 func take_damage(dmg: int, attacker_position: Vector2) -> void:
 	health -= dmg
 	health_bar.update_health_bar(health)
-	print(health)
 	take_damage_sfx.play()
 	# knockback enemy - smooth animation with a tween
 	var knockback_direction = (position - attacker_position).normalized()
@@ -57,7 +61,14 @@ func _die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sight/CollisionShape2D.set_deferred("disabled", true)
 	$HealthBar.visible = false
+	$Sight.queue_free()
+	$Hitbox.queue_free()
+	$CollisionShape2D.queue_free()
 	self.z_index = 4
+	# drop health pickup
+	
+	if randf() <= DROP_CHANCE:
+		drop_item()
 	
 func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -67,3 +78,25 @@ func _on_sight_body_exited(body: Node2D) -> void:
 	if body.name == "Player" and is_alive:
 		target = null
 		animated_sprite.play("idle")
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and is_alive:
+		target_in_range = true
+		body.take_damage(strength)
+		attack_cooldown.start()
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		target_in_range = false
+		attack_cooldown.stop()
+
+func _on_attack_cooldown_timeout() -> void:
+	if target and target_in_range and is_alive:
+		target.take_damage(strength)
+	
+func drop_item():
+	var drop = health_pickup_scene.instantiate()
+	drop.position = position
+	var level_root = get_parent().get_parent()
+	var items_node = level_root.get_node("Items")
+	items_node.call_deferred("add_child", drop)

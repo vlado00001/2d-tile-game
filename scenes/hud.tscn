@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://km6hbfq070yt"]
+
+[ext_resource type="Texture2D" uid="uid://cvie3y81rxfsd" path="res://assets/images/player/FullHeart.png" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=257837387]
+process_mode = 3
+layer = 100
+
+[node name="FadeOverlay" type="ColorRect" parent="." unique_id=1896504349]
+modulate = Color(0, 0, 0, 1)
+z_index = 15
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Hearts" type="Node" parent="." unique_id=1173042612]
+
+[node name="Heart1" type="TextureRect" parent="Hearts" unique_id=238095517]
+z_index = 10
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 28.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart2" type="TextureRect" parent="Hearts" unique_id=1785887554]
+z_index = 10
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart3" type="TextureRect" parent="Hearts" unique_id=322777430]
+z_index = 10
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart4" type="TextureRect" parent="Hearts" unique_id=2032633981]
+z_index = 10
+offset_left = 64.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart5" type="TextureRect" parent="Hearts" unique_id=771858673]
+z_index = 10
+offset_left = 84.0
+offset_top = 4.0
+offset_right = 108.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart6" type="TextureRect" parent="Hearts" unique_id=122236159]
+z_index = 10
+offset_left = 104.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart7" type="TextureRect" parent="Hearts" unique_id=277112449]
+z_index = 10
+offset_left = 124.0
+offset_top = 4.0
+offset_right = 148.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart8" type="TextureRect" parent="Hearts" unique_id=1817984388]
+z_index = 10
+offset_left = 144.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart9" type="TextureRect" parent="Hearts" unique_id=75609263]
+z_index = 10
+offset_left = 164.0
+offset_top = 4.0
+offset_right = 188.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
+
+[node name="Heart10" type="TextureRect" parent="Hearts" unique_id=1607755365]
+z_index = 10
+offset_left = 184.0
+offset_top = 4.0
+offset_right = 208.0
+offset_bottom = 28.0
+texture = ExtResource("1_ahhtf")
